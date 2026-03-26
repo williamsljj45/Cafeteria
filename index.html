@@ -264,5 +264,28 @@
             });
         }
     </script>
+    <script type="module">
+      // Importamos las herramientas directo de los servidores de Google
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+      import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+      // Tus llaves maestras
+      const firebaseConfig = {
+        apiKey: "AIzaSyAouJ5eNSTVzvcOLowXVrbloo2-ESeTQVU",
+        authDomain: "cafeteria-proyecto-escolar.firebaseapp.com",
+        projectId: "cafeteria-proyecto-escolar",
+        storageBucket: "cafeteria-proyecto-escolar.firebasestorage.app",
+        messagingSenderId: "636358773053",
+        appId: "1:636358773053:web:18eebf80e879e03e2ddd54"
+      };
+
+      // Inicializamos la aplicación y la Base de Datos
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      
+      // Hacemos la base de datos global para que tus filtros y carrito la puedan usar
+      window.db = db;
+      console.log("¡Firebase conectado exitosamente!");
+    </script>
 </body>
 </html>
