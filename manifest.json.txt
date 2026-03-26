@@ -1,0 +1,16 @@
+{
+  "name": "Menú Cafetería Otay",
+  "short_name": "Cafetería",
+  "description": "El mejor menú de postres y bebidas cerca de ti.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FDF8F5",
+  "theme_color": "#4A3022",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3065/3065259.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
