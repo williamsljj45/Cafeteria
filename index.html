@@ -265,11 +265,10 @@
         }
     </script>
     <script type="module">
-      // Importamos las herramientas directo de los servidores de Google
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-      import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+      // Agregamos las herramientas para "leer" la base de datos
+      import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
-      // Tus llaves maestras
       const firebaseConfig = {
         apiKey: "AIzaSyAouJ5eNSTVzvcOLowXVrbloo2-ESeTQVU",
         authDomain: "cafeteria-proyecto-escolar.firebaseapp.com",
@@ -279,13 +278,31 @@
         appId: "1:636358773053:web:18eebf80e879e03e2ddd54"
       };
 
-      // Inicializamos la aplicación y la Base de Datos
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
-      
-      // Hacemos la base de datos global para que tus filtros y carrito la puedan usar
       window.db = db;
-      console.log("¡Firebase conectado exitosamente!");
+
+      // Función para descargar el menú desde tu Firestore
+      async function pruebaDeConexion() {
+        console.log("Buscando platillos en Firebase...");
+        
+        try {
+          // Buscamos en la carpeta "Productos" (con P mayúscula)
+          const consulta = await getDocs(collection(db, "Productos"));
+          const menuNube = [];
+          
+          consulta.forEach((documento) => {
+            menuNube.push(documento.data());
+          });
+          
+          console.log("¡Éxito total! Datos recibidos:", menuNube);
+        } catch (error) {
+          console.error("Hubo un error al conectar:", error);
+        }
+      }
+
+      // Ejecutamos la prueba
+      pruebaDeConexion();
     </script>
 </body>
 </html>
