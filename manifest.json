@@ -1,7 +1,7 @@
 {
-  "name": "Menú Cafetería Otay",
-  "short_name": "Cafetería",
-  "description": "El mejor menú de postres y bebidas cerca de ti.",
+  "name": "MenÃº CafeterÃ­a Otay",
+  "short_name": "CafeterÃ­a",
+  "description": "El mejor menÃº de postres y bebidas cerca de ti.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#FDF8F5",
