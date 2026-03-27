@@ -5,10 +5,11 @@ function renderizarMenu() {
     var html = ''; 
     for (var i = 0; i < catalogo.length; i++) { 
         var item = catalogo[i]; 
-        // Agregamos el onload para disparar la animación
-        html += '<div class="item" data-categoria="' + item.categoria + '" onclick="abrirLightbox(' + i + ')"><img src="' + item.imagen + '" alt="' + item.nombre + '" loading="lazy" onload="this.classList.add(\'cargada\')"><div class="overlay"><div class="calificacion-mini"><i class="fa-solid fa-star"></i> ' + item.calificacion + '</div><div class="fila-info"><span class="nombre-producto">' + item.nombre + '</span><span class="precio">$' + item.precio + '</span></div></div></div>'; 
+        // Le quitamos el onload que estaba causando el problema
+        html += '<div class="item" data-categoria="' + item.categoria + '" onclick="abrirLightbox(' + i + ')"><img src="' + item.imagen + '" alt="' + item.nombre + '" loading="lazy"><div class="overlay"><div class="calificacion-mini"><i class="fa-solid fa-star"></i> ' + item.calificacion + '</div><div class="fila-info"><span class="nombre-producto">' + item.nombre + '</span><span class="precio">$' + item.precio + '</span></div></div></div>'; 
     } 
     contenedor.innerHTML = html; 
+
 }
 var ordenCarrito = []; var totalGlobal = 0; var indexProductoActual = -1;
 

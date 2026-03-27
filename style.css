@@ -70,7 +70,6 @@ footer { background-color: var(--bg-footer); color: var(--texto-footer); padding
 @media (max-width: 480px) { .contenedor { grid-template-columns: 1fr; } .footer-contenido { flex-direction: column; } }
 /* --- OPTIMIZACIÓN DE GALERÍA --- */
 .item {
-    /* Fondo animado que simula la carga */
     background: linear-gradient(90deg, var(--bg-principal) 25%, var(--color-borde) 50%, var(--bg-principal) 75%);
     background-size: 200% 100%;
     animation: skeleton-loading 1.5s infinite;
@@ -82,12 +81,14 @@ footer { background-color: var(--bg-footer); color: var(--texto-footer); padding
 }
 
 .item img {
-    /* La imagen nace invisible */
     opacity: 0;
-    transition: opacity 0.8s ease-in-out, transform 0.5s ease;
+    /* Forzamos a que aparezca solita después de medio segundo, sin importar el caché */
+    animation: aparecerFoto 0.8s ease-in-out forwards;
+    animation-delay: 0.2s; 
+    transition: transform 0.5s ease;
 }
 
-.item img.cargada {
-    /* Clase que inyectaremos cuando termine de descargar */
-    opacity: 1;
+@keyframes aparecerFoto {
+    to { opacity: 1; }
+
 }
