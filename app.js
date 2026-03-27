@@ -32,8 +32,58 @@ function eliminarDelCarrito(index) { ordenCarrito.splice(index, 1); localStorage
 
 function actualizarInterfazCarrito() { var divLista = document.getElementById('listaCarrito'); var spanTotal = document.getElementById('totalCarrito'); var spanContador = document.getElementById('contador'); spanContador.innerText = ordenCarrito.length; if (ordenCarrito.length === 0) { divLista.innerHTML = '<p style="text-align: center; color: gray; margin-top: 50px;">Tu carrito está vacío</p>'; spanTotal.innerText = '0'; totalGlobal = 0; return; } var html = ''; totalGlobal = 0; for (var i = 0; i < ordenCarrito.length; i++) { html += '<div class="item-carrito"><div class="item-carrito-top"><span>' + ordenCarrito[i].nombre + '</span><span>$' + ordenCarrito[i].precio + ' <i class="fa-solid fa-trash" style="color:#e74c3c; cursor:pointer; margin-left:10px;" onclick="eliminarDelCarrito(' + i + ')"></i></span></div>'; if (ordenCarrito[i].detalles !== "") { html += '<div class="item-carrito-detalles">Con: ' + ordenCarrito[i].detalles + '</div>'; } html += '</div>'; totalGlobal += ordenCarrito[i].precio; } divLista.innerHTML = html; spanTotal.innerText = totalGlobal; }
 
-function enviarWhatsApp() { if (ordenCarrito.length === 0) { mostrarToast("❌ Agrega productos primero"); return; } var mensaje = "☕ *¡Hola! Me gustaría hacer una orden:* \n\n"; for (var i = 0; i < ordenCarrito.length; i++) { mensaje += "🔸 1x " + ordenCarrito[i].nombre; if (ordenCarrito[i].detalles !== "") { mensaje += " _(" + ordenCarrito[i].detalles + ")_"; } mensaje += " - $" + ordenCarrito[i].precio + "\n"; } mensaje += "\n💰 *Total a pagar: $" + totalGlobal + "*\n\n¿En cuánto tiempo puedo pasar por mi pedido?"; var numeroTelefono = "526641811247"; var urlWhatsApp = "https://wa.me/" + numeroTelefono + "?text=" + encodeURIComponent(mensaje); window.open(urlWhatsApp, "_blank"); ordenCarrito = []; localStorage.setItem('carritoCafeteria', JSON.stringify(ordenCarrito)); actualizarInterfazCarrito(); toggleCarrito(); }
+function enviarWhatsApp() { 
+    if (ordenCarrito.length === 0) { 
+        mostrarToast("❌ Agrega productos primero"); 
+        return; 
+    } 
 
+    // 1. Validamos que el cliente haya puesto su nombre
+    var nombreInput = document.getElementById('nombreCliente').value.trim();
+    if (nombreInput === "") {
+        mostrarToast("⚠️ Por favor, ingresa tu nombre");
+        // Hacemos que el cuadro parpadee o se enfoque para llamar la atención
+        document.getElementById('nombreCliente').focus();
+        return;
+    }
+
+    // 2. Armamos el mensaje para WhatsApp
+    var mensaje = "☕ *¡Hola! Soy " + nombreInput + " y paso a recoger esta orden:* \n\n"; 
+    
+    // 3. Armamos un mini-resumen de texto oculto para meterlo adentro del QR
+    var resumenQR = "Cliente: " + nombreInput + " | Orden: "; 
+
+    for (var i = 0; i < ordenCarrito.length; i++) { 
+        mensaje += "🔸 1x " + ordenCarrito[i].nombre; 
+        resumenQR += "1x " + ordenCarrito[i].nombre;
+
+        if (ordenCarrito[i].detalles !== "") { 
+            mensaje += " _(" + ordenCarrito[i].detalles + ")_"; 
+            resumenQR += " (" + ordenCarrito[i].detalles + ")";
+        } 
+        mensaje += " - $" + ordenCarrito[i].precio + "\n"; 
+        resumenQR += ", ";
+    } 
+
+    mensaje += "\n💰 *Total a pagar: $" + totalGlobal + "*\n\nLlego en un momento."; 
+    resumenQR += " Total: $" + totalGlobal;
+
+    // 4. Generamos el Código QR usando la API
+    var urlQR = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(resumenQR);
+    document.getElementById('codigoQR').src = urlQR;
+    
+    // Hacemos visible el código en la pantalla
+    document.getElementById('contenedorQR').style.display = "block";
+
+    // 5. Abrimos WhatsApp
+    var numeroTelefono = "526641811247"; 
+    var urlWhatsApp = "https://wa.me/" + numeroTelefono + "?text=" + encodeURIComponent(mensaje); 
+    window.open(urlWhatsApp, "_blank"); 
+
+    // 6. Vaciamos el carrito en la memoria (pero dejamos la lista a la vista para que el cliente vea su QR junto a su orden)
+    ordenCarrito = []; 
+    localStorage.setItem('carritoCafeteria', JSON.stringify(ordenCarrito)); 
+}
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')

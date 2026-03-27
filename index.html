@@ -100,9 +100,19 @@
         </div>
         <div class="lista-carrito" id="listaCarrito"></div>
         <div class="carrito-total">Total: $<span id="totalCarrito">0</span></div>
+        
+        <div style="margin-bottom: 15px;">
+            <input type="text" id="nombreCliente" placeholder="Tu nombre para el pedido..." style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid var(--color-borde); background: transparent; color: var(--color-texto); font-family: 'Poppins', sans-serif; outline: none; box-sizing: border-box;">
+        </div>
+
         <button class="btn-whatsapp" onclick="enviarWhatsApp()">
-            <i class="fa-brands fa-whatsapp"></i> Enviar Pedido
+            <i class="fa-brands fa-whatsapp"></i> Confirmar y Enviar
         </button>
+
+        <div id="contenedorQR" style="display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 2px dashed var(--sombra);">
+            <p style="font-size: 14px; margin-bottom: 10px;">¡Muestra este código al llegar!</p>
+            <img id="codigoQR" src="" alt="Tu código QR" style="max-width: 150px; border-radius: 10px;">
+        </div>
     </div>
 
     <div id="lightbox" class="lightbox" onclick="if(event.target === this || event.target.className === 'cerrar') cerrarLightbox()">
