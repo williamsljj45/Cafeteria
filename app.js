@@ -1,28 +1,7 @@
 var catalogo = [];
 
-function renderizarMenu() { 
-    var contenedor = document.getElementById('contenedor-menu'); 
-    
-    // Si el catálogo está vacío, esperamos 300ms y reintentamos (remedio para móviles)
-    if (!catalogo || catalogo.length === 0) {
-        setTimeout(renderizarMenu, 300);
-        return;
-    }
+function renderizarMenu() { var contenedor = document.getElementById('contenedor-menu'); var html = ''; for (var i = 0; i < catalogo.length; i++) { var item = catalogo[i]; html += '<div class="item" data-categoria="' + item.categoria + '" onclick="abrirLightbox(' + i + ')"><img src="' + item.imagen + '" alt="' + item.nombre + '" loading="lazy"><div class="overlay"><div class="calificacion-mini"><i class="fa-solid fa-star"></i> ' + item.calificacion + '</div><div class="fila-info"><span class="nombre-producto">' + item.nombre + '</span><span class="precio">$' + item.precio + '</span></div></div></div>'; } contenedor.innerHTML = html; }
 
-    var html = ''; 
-    for (var i = 0; i < catalogo.length; i++) { 
-        var item = catalogo[i]; 
-        html += '<div class="item" data-categoria="' + item.categoria + '" onclick="abrirLightbox(' + i + ')">' +
-                '<img src="' + item.imagen + '" alt="' + item.nombre + '" loading="lazy">' +
-                '<div class="overlay">' +
-                '<div class="calificacion-mini"><i class="fa-solid fa-star"></i> ' + item.calificacion + '</div>' +
-                '<div class="fila-info">' +
-                '<span class="nombre-producto">' + item.nombre + '</span>' +
-                '<span class="precio">$' + item.precio + '</span>' +
-                '</div></div></div>'; 
-    } 
-    contenedor.innerHTML = html; 
-}
 var ordenCarrito = []; var totalGlobal = 0; var indexProductoActual = -1;
 
 window.onload = function() { if (localStorage.getItem('carritoCafeteria')) { ordenCarrito = JSON.parse(localStorage.getItem('carritoCafeteria')); actualizarInterfazCarrito(); } if (localStorage.getItem('temaCafeteria') === 'oscuro') { toggleTemaForzado(); } };

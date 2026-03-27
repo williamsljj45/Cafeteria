@@ -68,31 +68,3 @@ footer { background-color: var(--bg-footer); color: var(--texto-footer); padding
 .redes-sociales a:hover { color: var(--color-dorado); }
 @media (max-width: 768px) { .contenedor { grid-template-columns: repeat(2, 1fr); } .panel-carrito { width: 100%; right: -100%; } .hero-contenido h1 { font-size: 2.5rem; } }
 @media (max-width: 480px) { .contenedor { grid-template-columns: 1fr; } .footer-contenido { flex-direction: column; } }
-/* --- OPTIMIZACIÓN DE GALERÍA --- */
-.item {
-    background: linear-gradient(90deg, var(--bg-principal) 25%, var(--color-borde) 50%, var(--bg-principal) 75%);
-    background-size: 200% 100%;
-    animation: skeleton-loading 1.5s infinite;
-    position: relative;
-    overflow: hidden;
-}
-
-@keyframes skeleton-loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-.item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    opacity: 0; /* Empiezan invisibles */
-    animation: aparecerFoto 0.6s ease-in-out forwards;
-    animation-delay: 0.3s; /* Pequeña pausa para que se vea el efecto de carga */
-}
-
-@keyframes aparecerFoto {
-    from { opacity: 0; transform: scale(1.05); }
-    to { opacity: 1; transform: scale(1); }
-}
