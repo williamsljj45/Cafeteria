@@ -1,20 +1,10 @@
-var catalogo = [
-    { nombre: "Chocolate caliente", precio: 55, categoria: "bebidas", imagen: "Chocolate.png", calificacion: 4.8, resenas: 124, opciones: [{ nombreFiltro: "Tipo de Leche", variaciones: [{etiqueta: "Leche Entera", extra: 0}, {etiqueta: "Leche de Almendra", extra: 15}, {etiqueta: "Leche de Avena", extra: 15}] }] },
-    { nombre: "Crepas", precio: 75, categoria: "postres", imagen: "Crepas.png", calificacion: 4.9, resenas: 89, opciones: [{ nombreFiltro: "Topping Extra", variaciones: [{etiqueta: "Ninguno", extra: 0}, {etiqueta: "Extra Nutella", extra: 20}, {etiqueta: "Frutos Rojos", extra: 25}] }] },
-    { nombre: "Donas", precio: 45, categoria: "postres", imagen: "Donas.png", calificacion: 4.5, resenas: 42, opciones: [] },
-    { nombre: "Helado", precio: 60, categoria: "postres", imagen: "Helado.png", calificacion: 4.6, resenas: 55, opciones: [] },
-    { nombre: "Limonada", precio: 40, categoria: "bebidas", imagen: "Limonada.png", calificacion: 4.7, resenas: 30, opciones: [] },
-    { nombre: "Malteada", precio: 65, categoria: "bebidas", imagen: "Malteada.png", calificacion: 4.8, resenas: 110, opciones: [] },
-    { nombre: "Muffins", precio: 35, categoria: "postres", imagen: "Muffins.png", calificacion: 4.3, resenas: 25, opciones: [] },
-    { nombre: "Pancake osito", precio: 85, categoria: "desayunos", imagen: "Pancake osito.png", calificacion: 5.0, resenas: 200, opciones: [] },
-    { nombre: "Torre de hot cakes", precio: 110, categoria: "desayunos", imagen: "Torre de hot cakes.png", calificacion: 4.9, resenas: 150, opciones: [{ nombreFiltro: "Bañado en", variaciones: [{etiqueta: "Miel de Maple", extra: 0}, {etiqueta: "Lechera", extra: 15}, {etiqueta: "Cajeta", extra: 15}] }] }
-];
+var catalogo = [];
 
 function renderizarMenu() { var contenedor = document.getElementById('contenedor-menu'); var html = ''; for (var i = 0; i < catalogo.length; i++) { var item = catalogo[i]; html += '<div class="item" data-categoria="' + item.categoria + '" onclick="abrirLightbox(' + i + ')"><img src="' + item.imagen + '" alt="' + item.nombre + '" loading="lazy"><div class="overlay"><div class="calificacion-mini"><i class="fa-solid fa-star"></i> ' + item.calificacion + '</div><div class="fila-info"><span class="nombre-producto">' + item.nombre + '</span><span class="precio">$' + item.precio + '</span></div></div></div>'; } contenedor.innerHTML = html; }
 
 var ordenCarrito = []; var totalGlobal = 0; var indexProductoActual = -1;
 
-window.onload = function() { renderizarMenu(); if (localStorage.getItem('carritoCafeteria')) { ordenCarrito = JSON.parse(localStorage.getItem('carritoCafeteria')); actualizarInterfazCarrito(); } if (localStorage.getItem('temaCafeteria') === 'oscuro') { toggleTemaForzado(); } };
+window.onload = function() { if (localStorage.getItem('carritoCafeteria')) { ordenCarrito = JSON.parse(localStorage.getItem('carritoCafeteria')); actualizarInterfazCarrito(); } if (localStorage.getItem('temaCafeteria') === 'oscuro') { toggleTemaForzado(); } };
 
 function toggleTemaForzado() { document.body.classList.add('dark-mode'); document.getElementById('icono-tema').classList.replace('fa-moon', 'fa-sun'); }
 
