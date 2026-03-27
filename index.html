@@ -49,85 +49,13 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      // Reemplaza G-XXXXXXXXXX con tu ID real cuando crees tu cuenta de Analytics
       gtag('config', 'G-SCNDY8K4G8');
     </script>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root { --bg-principal: #FDF8F5; --color-texto: #4A3022; --color-borde: #4A3022; --bg-tarjeta: #ffffff; --color-dorado: #FFD700; --sombra: rgba(0,0,0,0.08); --bg-footer: #4A3022; --texto-footer: #FDF8F5; --bg-carrito: #ffffff; }
-        body.dark-mode { --bg-principal: #121212; --color-texto: #E0E0E0; --color-borde: #E0E0E0; --bg-tarjeta: #1E1E1E; --color-dorado: #F5B041; --sombra: rgba(255,255,255,0.05); --bg-footer: #0a0a0a; --texto-footer: #aaaaaa; --bg-carrito: #1E1E1E; }
-        body { margin: 0; font-family: 'Poppins', sans-serif; background: var(--bg-principal); color: var(--color-texto); transition: background 0.4s ease, color 0.4s ease; }
-        .header-top { display: flex; justify-content: flex-end; align-items: center; padding: 15px 30px; position: absolute; width: 100%; box-sizing: border-box; z-index: 100; }
-        .btn-theme { background: rgba(0,0,0,0.5); border: none; font-size: 24px; color: white; cursor: pointer; transition: transform 0.3s ease; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .btn-theme:hover { transform: scale(1.1); background: var(--color-dorado); color: black; }
-        .hero-banner { position: relative; width: 100%; height: 60vh; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 40px; background-color: #2c1e16; }
-        .hero-banner video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translateX(-50%) translateY(-50%); object-fit: cover; opacity: 0.6; }
-        .hero-contenido { position: relative; z-index: 10; text-align: center; color: white; padding: 20px; }
-        .hero-contenido h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0; text-shadow: 2px 4px 10px rgba(0,0,0,0.5); }
-        .hero-contenido p { font-size: 1.2rem; margin-top: 10px; text-shadow: 1px 2px 5px rgba(0,0,0,0.5); letter-spacing: 2px; }
-        .filtros { text-align: center; margin-bottom: 30px; padding: 10px; }
-        #buscador { padding: 10px 20px; width: 80%; max-width: 400px; border: 2px solid var(--color-borde); border-radius: 25px; font-family: 'Poppins', sans-serif; font-size: 16px; background-color: transparent; color: var(--color-texto); outline: none; transition: all 0.3s ease; margin-bottom: 15px; }
-        .btn-filtro { background-color: transparent; border: 2px solid var(--color-borde); color: var(--color-texto); padding: 8px 20px; margin: 5px; border-radius: 25px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 15px; transition: all 0.3s ease; }
-        .btn-filtro:hover, .btn-filtro.activo { background-color: var(--color-borde); color: var(--bg-principal); }
-        .contenedor { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; padding: 0 20px 40px 20px; max-width: 1000px; margin: auto; }
-        .item { overflow: hidden; border-radius: 15px; position: relative; cursor: pointer; background-color: var(--bg-tarjeta); box-shadow: 0 4px 10px var(--sombra); transition: transform 0.3s ease, box-shadow 0.3s ease; aspect-ratio: 1 / 1; animation: aparecerArriba 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); }
-        .item:nth-child(1) { animation-delay: 0.1s; } .item:nth-child(2) { animation-delay: 0.2s; } .item:nth-child(3) { animation-delay: 0.3s; } .item:nth-child(4) { animation-delay: 0.4s; } .item:nth-child(5) { animation-delay: 0.5s; } .item:nth-child(6) { animation-delay: 0.6s; }
-        @keyframes aparecerArriba { to { opacity: 1; transform: translateY(0); } }
-        .item.oculto { display: none; }
-        .item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .item:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
-        .item:hover img { transform: scale(1.1); }
-        .overlay { position: absolute; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: white; width: 100%; padding: 30px 15px 15px 15px; box-sizing: border-box; opacity: 0; transition: opacity 0.3s ease; display: flex; flex-direction: column; justify-content: flex-end; }
-        .item:hover .overlay { opacity: 1; }
-        .fila-info { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; }
-        .nombre-producto { font-size: 16px; font-weight: 400; }
-        .precio { font-weight: 600; font-size: 18px; color: var(--color-dorado); }
-        .calificacion-mini { font-size: 12px; color: var(--color-dorado); margin-bottom: 5px; }
-        .lightbox { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; flex-direction: column; overflow-y: auto; padding: 20px 0; }
-        .lightbox-contenido-scroll { display: flex; flex-direction: column; align-items: center; max-height: 90vh; width: 100%; overflow-y: auto; }
-        .lightbox img { max-width: 90%; max-height: 50vh; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: zoomIn 0.3s ease; }
-        #lightbox-texto { color: white; margin-top: 20px; font-size: 28px; font-family: 'Playfair Display', serif; text-align: center; }
-        .estrellas-lightbox { color: var(--color-dorado); font-size: 16px; margin-bottom: 10px; }
-        .resenas-lightbox { color: #aaaaaa; font-size: 14px; margin-left: 5px; font-family: 'Poppins', sans-serif;}
-        #lightbox-precio { color: var(--color-dorado); font-size: 24px; font-weight: 600; margin-bottom: 20px; }
-        .opciones-contenedor { background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 15px; width: 80%; max-width: 400px; margin-bottom: 20px; color: white; text-align: left; }
-        .grupo-opcion { margin-bottom: 15px; }
-        .grupo-opcion label { display: block; font-size: 14px; margin-bottom: 5px; font-weight: 600; color: var(--color-dorado); }
-        .grupo-opcion select { width: 100%; padding: 8px; border-radius: 8px; border: none; font-family: 'Poppins', sans-serif; background: #fff; color: #333; outline: none; }
-        .btn-agregar { background-color: #27ae60; color: white; border: none; padding: 12px 30px; font-size: 18px; border-radius: 30px; cursor: pointer; font-family: 'Poppins', sans-serif; transition: background 0.3s; margin-bottom: 30px; }
-        .btn-agregar:hover { background-color: #2ecc71; }
-        .cerrar { position: absolute; top: 20px; right: 40px; color: rgba(255,255,255,0.7); font-size: 50px; cursor: pointer; transition: color 0.3s ease; line-height: 1; z-index: 1001; }
-        .cerrar:hover { color: white; }
-        @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .btn-flotante-carrito { position: fixed; bottom: 30px; right: 30px; background-color: var(--color-borde); color: var(--bg-principal); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 900; transition: transform 0.3s; }
-        .btn-flotante-carrito:hover { transform: scale(1.1); }
-        .contador-carrito { position: absolute; top: -5px; right: -5px; background-color: #e74c3c; color: white; font-size: 12px; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-        .panel-carrito { position: fixed; top: 0; right: -400px; width: 350px; height: 100%; background-color: var(--bg-carrito); box-shadow: -5px 0 15px rgba(0,0,0,0.2); z-index: 950; transition: right 0.4s ease; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; }
-        .panel-carrito.abierto { right: 0; }
-        .carrito-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--sombra); padding-bottom: 10px; margin-bottom: 20px; }
-        .cerrar-carrito { font-size: 24px; cursor: pointer; color: var(--color-texto); }
-        .lista-carrito { flex-grow: 1; overflow-y: auto; }
-        .item-carrito { display: flex; flex-direction: column; margin-bottom: 15px; font-size: 15px; border-bottom: 1px solid var(--sombra); padding-bottom: 10px; }
-        .item-carrito-top { display: flex; justify-content: space-between; font-weight: 600; }
-        .item-carrito-detalles { font-size: 12px; color: gray; margin-top: 5px; }
-        .carrito-total { font-size: 22px; font-weight: bold; text-align: right; margin-top: 20px; border-top: 2px solid var(--sombra); padding-top: 10px; margin-bottom: 20px; }
-        .btn-whatsapp { background-color: #25D366; color: white; border: none; padding: 15px; width: 100%; font-size: 18px; border-radius: 30px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: bold; transition: background 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .btn-whatsapp:hover { background-color: #128C7E; }
-        .toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 10px; padding: 16px; position: fixed; z-index: 2000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.5s, bottom 0.5s, visibility 0.5s; }
-        .toast.mostrar { visibility: visible; opacity: 1; bottom: 50px; }
-        footer { background-color: var(--bg-footer); color: var(--texto-footer); padding: 40px 20px; text-align: center; margin-top: 50px; }
-        .footer-contenido { display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 1000px; margin: auto; gap: 20px; }
-        .footer-seccion h3 { font-family: 'Playfair Display', serif; color: var(--color-dorado); margin-bottom: 15px; }
-        .footer-seccion p { margin: 5px 0; font-size: 14px; }
-        .redes-sociales { margin-top: 15px; }
-        .redes-sociales a { color: var(--texto-footer); font-size: 24px; margin: 0 10px; transition: color 0.3s; }
-        .redes-sociales a:hover { color: var(--color-dorado); }
-        @media (max-width: 768px) { .contenedor { grid-template-columns: repeat(2, 1fr); } .panel-carrito { width: 100%; right: -100%; } .hero-contenido h1 { font-size: 2.5rem; } }
-        @media (max-width: 480px) { .contenedor { grid-template-columns: 1fr; } .footer-contenido { flex-direction: column; } }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -214,95 +142,8 @@
         <p style="margin-top: 30px; font-size: 12px; opacity: 0.7;">&copy; 2026 Menú Cafetería. Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        // AQUÍ VA TU CATÁLOGO EXACTAMENTE COMO LO TENÍAS
-        var catalogo = [
-            { nombre: "Chocolate caliente", precio: 55, categoria: "bebidas", imagen: "Chocolate.png", calificacion: 4.8, resenas: 124, opciones: [{ nombreFiltro: "Tipo de Leche", variaciones: [{etiqueta: "Leche Entera", extra: 0}, {etiqueta: "Leche de Almendra", extra: 15}, {etiqueta: "Leche de Avena", extra: 15}] }] },
-            { nombre: "Crepas", precio: 75, categoria: "postres", imagen: "Crepas.png", calificacion: 4.9, resenas: 89, opciones: [{ nombreFiltro: "Topping Extra", variaciones: [{etiqueta: "Ninguno", extra: 0}, {etiqueta: "Extra Nutella", extra: 20}, {etiqueta: "Frutos Rojos", extra: 25}] }] },
-            { nombre: "Donas", precio: 45, categoria: "postres", imagen: "Donas.png", calificacion: 4.5, resenas: 42, opciones: [] },
-            { nombre: "Helado", precio: 60, categoria: "postres", imagen: "Helado.png", calificacion: 4.6, resenas: 55, opciones: [] },
-            { nombre: "Limonada", precio: 40, categoria: "bebidas", imagen: "Limonada.png", calificacion: 4.7, resenas: 30, opciones: [] },
-            { nombre: "Malteada", precio: 65, categoria: "bebidas", imagen: "Malteada.png", calificacion: 4.8, resenas: 110, opciones: [] },
-            { nombre: "Muffins", precio: 35, categoria: "postres", imagen: "Muffins.png", calificacion: 4.3, resenas: 25, opciones: [] },
-            { nombre: "Pancake osito", precio: 85, categoria: "desayunos", imagen: "Pancake osito.png", calificacion: 5.0, resenas: 200, opciones: [] },
-            { nombre: "Torre de hot cakes", precio: 110, categoria: "desayunos", imagen: "Torre de hot cakes.png", calificacion: 4.9, resenas: 150, opciones: [{ nombreFiltro: "Bañado en", variaciones: [{etiqueta: "Miel de Maple", extra: 0}, {etiqueta: "Lechera", extra: 15}, {etiqueta: "Cajeta", extra: 15}] }] }
-        ];
+    <script src="app.js"></script>
+    <script type="module" src="firebase.js"></script>
 
-        // FUNCIONES DE LA PÁGINA (IGUAL QUE ANTES)
-        function renderizarMenu() { var contenedor = document.getElementById('contenedor-menu'); var html = ''; for (var i = 0; i < catalogo.length; i++) { var item = catalogo[i]; html += '<div class="item" data-categoria="' + item.categoria + '" onclick="abrirLightbox(' + i + ')"><img src="' + item.imagen + '" alt="' + item.nombre + '" loading="lazy"><div class="overlay"><div class="calificacion-mini"><i class="fa-solid fa-star"></i> ' + item.calificacion + '</div><div class="fila-info"><span class="nombre-producto">' + item.nombre + '</span><span class="precio">$' + item.precio + '</span></div></div></div>'; } contenedor.innerHTML = html; }
-        
-        var ordenCarrito = []; var totalGlobal = 0; var indexProductoActual = -1;
-        window.onload = function() { renderizarMenu(); if (localStorage.getItem('carritoCafeteria')) { ordenCarrito = JSON.parse(localStorage.getItem('carritoCafeteria')); actualizarInterfazCarrito(); } if (localStorage.getItem('temaCafeteria') === 'oscuro') { toggleTemaForzado(); } };
-        function toggleTemaForzado() { document.body.classList.add('dark-mode'); document.getElementById('icono-tema').classList.replace('fa-moon', 'fa-sun'); }
-        function toggleTema() { var body = document.body; var icono = document.getElementById('icono-tema'); body.classList.toggle('dark-mode'); if (body.classList.contains('dark-mode')) { icono.classList.replace('fa-moon', 'fa-sun'); localStorage.setItem('temaCafeteria', 'oscuro'); } else { icono.classList.replace('fa-sun', 'fa-moon'); localStorage.setItem('temaCafeteria', 'claro'); } }
-        function buscarProducto() { var textoIngresado = document.getElementById('buscador').value.toLowerCase(); var items = document.querySelectorAll('.item'); items.forEach(function(item) { var nombreProducto = item.querySelector('.nombre-producto').innerText.toLowerCase(); if (nombreProducto.includes(textoIngresado)) { item.classList.remove('oculto'); } else { item.classList.add('oculto'); } }); document.querySelectorAll('.btn-filtro').forEach(function(btn) { btn.classList.remove('activo'); }); }
-        function filtrar(categoria) { var items = document.querySelectorAll('.item'); var botones = document.querySelectorAll('.btn-filtro'); document.getElementById('buscador').value = ""; botones.forEach(function(btn) { btn.classList.remove('activo'); }); event.target.classList.add('activo'); items.forEach(function(item) { if (categoria === 'todos' || item.getAttribute('data-categoria') === categoria) { item.classList.remove('oculto'); } else { item.classList.add('oculto'); } }); }
-        
-        function abrirLightbox(index) { indexProductoActual = index; var item = catalogo[index]; document.getElementById('lightbox-img').src = item.imagen; document.getElementById('lightbox-texto').innerText = item.nombre; document.getElementById('lightbox-precio').innerText = "$" + item.precio; var estrellasHTML = '<i class="fa-solid fa-star"></i> ' + item.calificacion + ' <span class="resenas-lightbox">(' + item.resenas + ' reseñas)</span>'; document.getElementById('lightbox-estrellas').innerHTML = estrellasHTML; var contenedorOpciones = document.getElementById('contenedor-opciones'); contenedorOpciones.innerHTML = ''; if (item.opciones && item.opciones.length > 0) { var htmlOpciones = '<div class="opciones-contenedor">'; for (var i = 0; i < item.opciones.length; i++) { var grupo = item.opciones[i]; htmlOpciones += '<div class="grupo-opcion"><label>' + grupo.nombreFiltro + '</label><select class="select-personalizado" onchange="recalcularPrecio()">'; for (var j = 0; j < grupo.variaciones.length; j++) { var variante = grupo.variaciones[j]; var textoExtra = variante.extra > 0 ? ' (+$' + variante.extra + ')' : ''; htmlOpciones += '<option value="' + variante.extra + '" data-etiqueta="' + variante.etiqueta + '">' + variante.etiqueta + textoExtra + '</option>'; } htmlOpciones += '</select></div>'; } htmlOpciones += '</div>'; contenedorOpciones.innerHTML = htmlOpciones; } document.getElementById('lightbox').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function recalcularPrecio() { var item = catalogo[indexProductoActual]; var precioBase = item.precio; var extrasTotal = 0; var selects = document.querySelectorAll('.select-personalizado'); selects.forEach(function(select) { extrasTotal += parseInt(select.value); }); var precioFinal = precioBase + extrasTotal; document.getElementById('lightbox-precio').innerText = "$" + precioFinal; }
-        function cerrarLightbox() { document.getElementById('lightbox').style.display = 'none'; document.body.style.overflow = 'auto'; }
-        document.addEventListener('keydown', function(event) { if (event.key === "Escape") { cerrarLightbox(); var panel = document.getElementById('panelCarrito'); if (panel.classList.contains('abierto')) { toggleCarrito(); } } });
-        
-        function mostrarToast(mensaje) { var toast = document.getElementById("toast"); toast.innerText = mensaje; toast.className = "toast mostrar"; setTimeout(function(){ toast.className = toast.className.replace("mostrar", ""); }, 3000); }
-        function toggleCarrito() { var panel = document.getElementById('panelCarrito'); panel.classList.toggle('abierto'); }
-        function agregarAlCarrito() { var item = catalogo[indexProductoActual]; var precioBase = item.precio; var extrasTotal = 0; var detallesTexto = []; var selects = document.querySelectorAll('.select-personalizado'); selects.forEach(function(select) { var costoExtra = parseInt(select.value); extrasTotal += costoExtra; var etiquetaSeleccionada = select.options[select.selectedIndex].getAttribute('data-etiqueta'); if (costoExtra > 0 || etiquetaSeleccionada.includes("Leche")) { detallesTexto.push(etiquetaSeleccionada); } }); var precioFinal = precioBase + extrasTotal; var productoAComprar = { nombre: item.nombre, precio: precioFinal, detalles: detallesTexto.join(", ") }; ordenCarrito.push(productoAComprar); localStorage.setItem('carritoCafeteria', JSON.stringify(ordenCarrito)); actualizarInterfazCarrito(); cerrarLightbox(); mostrarToast("✅ " + item.nombre + " añadido al carrito"); }
-        function eliminarDelCarrito(index) { ordenCarrito.splice(index, 1); localStorage.setItem('carritoCafeteria', JSON.stringify(ordenCarrito)); actualizarInterfazCarrito(); }
-        function actualizarInterfazCarrito() { var divLista = document.getElementById('listaCarrito'); var spanTotal = document.getElementById('totalCarrito'); var spanContador = document.getElementById('contador'); spanContador.innerText = ordenCarrito.length; if (ordenCarrito.length === 0) { divLista.innerHTML = '<p style="text-align: center; color: gray; margin-top: 50px;">Tu carrito está vacío</p>'; spanTotal.innerText = '0'; totalGlobal = 0; return; } var html = ''; totalGlobal = 0; for (var i = 0; i < ordenCarrito.length; i++) { html += '<div class="item-carrito"><div class="item-carrito-top"><span>' + ordenCarrito[i].nombre + '</span><span>$' + ordenCarrito[i].precio + ' <i class="fa-solid fa-trash" style="color:#e74c3c; cursor:pointer; margin-left:10px;" onclick="eliminarDelCarrito(' + i + ')"></i></span></div>'; if (ordenCarrito[i].detalles !== "") { html += '<div class="item-carrito-detalles">Con: ' + ordenCarrito[i].detalles + '</div>'; } html += '</div>'; totalGlobal += ordenCarrito[i].precio; } divLista.innerHTML = html; spanTotal.innerText = totalGlobal; }
-        
-        function enviarWhatsApp() { if (ordenCarrito.length === 0) { mostrarToast("❌ Agrega productos primero"); return; } var mensaje = "☕ *¡Hola! Me gustaría hacer una orden:* \n\n"; for (var i = 0; i < ordenCarrito.length; i++) { mensaje += "🔸 1x " + ordenCarrito[i].nombre; if (ordenCarrito[i].detalles !== "") { mensaje += " _(" + ordenCarrito[i].detalles + ")_"; } mensaje += " - $" + ordenCarrito[i].precio + "\n"; } mensaje += "\n💰 *Total a pagar: $" + totalGlobal + "*\n\n¿En cuánto tiempo puedo pasar por mi pedido?"; var numeroTelefono = "526641811247"; var urlWhatsApp = "https://wa.me/" + numeroTelefono + "?text=" + encodeURIComponent(mensaje); window.open(urlWhatsApp, "_blank"); ordenCarrito = []; localStorage.setItem('carritoCafeteria', JSON.stringify(ordenCarrito)); actualizarInterfazCarrito(); toggleCarrito(); }
-
-        // --- NUEVO: INICIALIZAR LA PWA (SERVICE WORKER) ---
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(registration => {
-                        console.log('Service Worker registrado con éxito:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.log('Fallo al registrar el Service Worker:', error);
-                    });
-            });
-        }
-    </script>
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-      // Agregamos las herramientas para "leer" la base de datos
-      import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyAouJ5eNSTVzvcOLowXVrbloo2-ESeTQVU",
-        authDomain: "cafeteria-proyecto-escolar.firebaseapp.com",
-        projectId: "cafeteria-proyecto-escolar",
-        storageBucket: "cafeteria-proyecto-escolar.firebasestorage.app",
-        messagingSenderId: "636358773053",
-        appId: "1:636358773053:web:18eebf80e879e03e2ddd54"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-      window.db = db;
-
-      // Función para descargar el menú desde tu Firestore
-      async function pruebaDeConexion() {
-        console.log("Buscando platillos en Firebase...");
-        
-        try {
-          // Buscamos en la carpeta "Productos" (con P mayúscula)
-          const consulta = await getDocs(collection(db, "Productos"));
-          const menuNube = [];
-          
-          consulta.forEach((documento) => {
-            menuNube.push(documento.data());
-          });
-          
-          console.log("¡Éxito total! Datos recibidos:", menuNube);
-        } catch (error) {
-          console.error("Hubo un error al conectar:", error);
-        }
-      }
-
-      // Ejecutamos la prueba
-      pruebaDeConexion();
-    </script>
 </body>
 </html>
